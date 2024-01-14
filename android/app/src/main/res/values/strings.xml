@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ionic-todo-app</string>
-    <string name="title_activity_main">ionic-todo-app</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Tripture</string>
+    <string name="title_activity_main">Tripture</string>
+    <string name="package_name">tripture</string>
+    <string name="custom_url_scheme">tripture</string>
 </resources>

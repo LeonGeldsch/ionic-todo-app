@@ -1,17 +1,13 @@
-import { Redirect, Route } from "react-router-dom";
-import {
-  IonApp,
-  IonInput,
-  IonLoading,
-  IonPage,
-  IonRouterOutlet,
-  setupIonicReact,
-} from "@ionic/react";
+import { Route } from "react-router-dom";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 import "./firebaseSetup";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import WelcomePage from "./pages/WelcomePage";
+import Menu from "./pages/Menu";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -31,16 +27,19 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useState } from "react";
 
-setupIonicReact();
+/* Global CSS */
+import "./globals.css";
+
+setupIonicReact({
+  //mode: "ios",
+});
 
 const App: React.FC = () => {
   const auth = getAuth();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -55,23 +54,10 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Redirect exact from="/" to="home" />
-          <Route
-            exact
-            path="/home"
-            render={() => {
-              if (loggedIn && !loading) return <Home />;
-              if (loading) return <IonLoading isOpen={true} />;
-              if (!loading && !loggedIn)
-                return <Redirect from="/home" to="/login" />;
-            }}
-          />
+          <Route path="/app" component={Menu} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/" component={WelcomePage} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

@@ -4,12 +4,12 @@ import { collection, getFirestore, getDocs } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDYaEw3WiVz4hSkuUQuL6WTtsm_ym61Ksw",
-  authDomain: "ionic-todo-app-6dfff.firebaseapp.com",
-  projectId: "ionic-todo-app-6dfff",
-  storageBucket: "ionic-todo-app-6dfff.appspot.com",
-  messagingSenderId: "569511505084",
-  appId: "1:569511505084:web:20cbfdf14c1de48777f4b9",
+  apiKey: "AIzaSyADo6adjZ2bAYbpYylnFIgzUWRJQM6PMlw",
+  authDomain: "travel-app-fca24.firebaseapp.com",
+  projectId: "travel-app-fca24",
+  storageBucket: "travel-app-fca24.appspot.com",
+  messagingSenderId: "5426449715",
+  appId: "1:5426449715:web:6be3f919a9b96fc4800246",
 };
 
 // Initialize Firebase
